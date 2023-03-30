@@ -1,0 +1,31 @@
+# Drupal with PostgreSQL
+#
+# Access via "http://localhost:8080"
+#
+# During initial Drupal setup,
+# Database type: MySQL
+# Database name: drupal
+# Database username: drupal
+# Database password: password
+# ADVANCED OPTIONS; Database host: mysql
+
+version: '3.1'
+services:
+  drupal:
+    image: drupal:10-apache
+    working_dir: /var/www/
+    ports:
+      - 8080:80
+    volumes:
+      - ./drupal:/var/www/
+      - ./apache2/sites-enabled/:/etc/apache2/sites-enabled
+
+  mysql:
+    image: mysql:8
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
