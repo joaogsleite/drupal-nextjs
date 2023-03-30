@@ -7,6 +7,17 @@
 docker compose up -d 
 ```
 
+* Create `.env.local` file inside `nextjs/` folder:
+
+```
+# See https://next-drupal.org/docs/environment-variables
+NEXT_PUBLIC_DRUPAL_BASE_URL="http://localhost:8080"
+NEXT_IMAGE_DOMAIN=localhost
+
+# Required for On-demand Revalidation
+DRUPAL_REVALIDATE_SECRET=secret
+```
+
 * Start nextjs
 
 ```
